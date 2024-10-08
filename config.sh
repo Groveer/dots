@@ -34,7 +34,7 @@ dict=(
     [mpv]=mpv
     [kitty]=kitty
     [fastfetch]=fastfetch
-    [bash]=bash
+    ["/.bash"]=bash
     [fish]=fish
     [starship]=starship
     [gdb]=gdb
@@ -51,11 +51,11 @@ get_dir() {
         home_path=${path/"$cur_path/configs"/"$HOME"}
         if [[ $path =~ ".config/" ]] || [[ $path =~ ".bash_it/" ]] || [[ $path =~ ".themes/" ]] || [ -f $path ]; then
             parent_path=$(dirname $home_path)
-            [ ! -d $parent_path ] && mkdir -p $parent_path && echo mkdir -p $parent_path done!
-            [ -d $path ] && [ -d $home_path ] && rm -rf $home_path && rm -rf $home_path done!
             for key in ${!dict[@]}; do
                 value=${dict[$key]}
-                if command -v "${value}" >/dev/null 2>&1 && [[ $path =~ $key ]]; then
+                if [[ $path =~ $key ]] && command -v "${value}" >/dev/null 2>&1; then
+                    [ ! -d $parent_path ] && mkdir -p $parent_path && echo mkdir -p $parent_path done!
+                    [ -d $path ] && [ -d $home_path ] && rm -rf $home_path && rm -rf $home_path done!
                     ln -sf $path $home_path && echo "ln -sf $path $home_path done!"
                     echo $home_path >>$dot_cache
                     break
