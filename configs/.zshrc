@@ -31,9 +31,9 @@ fi
 if command -v bat >/dev/null; then
     alias cat="bat -p"
 fi
-if command -v zoxide >/dev/null; then
-    eval "$(zoxide init bash)"
-fi
+# if command -v zoxide >/dev/null; then
+#     eval "$(zoxide init bash)"
+# fi
 
 if command -v fnm >/dev/null; then
     eval "$(fnm env --use-on-cd)"
@@ -41,10 +41,8 @@ fi
 if test -d /usr/lib/qt6/bin; then
     export PATH="/usr/lib/qt6/bin/:$PATH"
 fi
-if command -v pyenv >/dev/null; then
-    export PYENV_ROOT="$HOME/.pyenv"
-    export PATH="$PYENV_ROOT/bin:$PATH"
-    eval "$(pyenv init -)"
+if test -d ${HOME}/.python_venv; then
+    source ${HOME}/.python_venv/bin/activate
 fi
 
 if test -d /usr/local/texlive; then
