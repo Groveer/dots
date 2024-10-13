@@ -1,6 +1,3 @@
 [submodule "configs/.config/nvim"]
 	path = configs/.config/nvim
 	url = https://github.com/Groveer/nvimdots.git
-[submodule "configs/.bash_it"]
-	path = configs/.bash_it
-	url = https://github.com/Bash-it/bash-it.git
