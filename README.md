@@ -29,7 +29,11 @@ Some tools can also be installed from `cargo/pip/npm`.
 1. shell
 
 ```bash
-yay -S eza rsync bat starship htop
+yay -S zsh eza rsync bat starship htop
+```
+
+```bash
+chsh -s /bin/zsh
 ```
 
 2. fonts

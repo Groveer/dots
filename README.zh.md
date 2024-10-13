@@ -30,7 +30,11 @@ https://github.com/prasanthrangan/hyprdots/assets/106020512/7f8fadc8-e293-4482-a
 1. shell
 
 ```bash
-yay -S eza rsync bat starship htop
+yay -S zsh eza rsync bat starship htop
+```
+
+```bash
+chsh -s /bin/zsh
 ```
 
 2. fonts
@@ -146,7 +150,7 @@ fnm default <version>
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup sh
 ```
 
-重启终端以应用的环境变量，使用`./stow.sh`脚本会自动使用国内源：
+重启终端以应用的环境变量，使用`./config.sh install`脚本会自动使用国内源：
 
 ```bash
 ./stow.sh
