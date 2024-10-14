@@ -1,5 +1,9 @@
 export PATH=$PATH:~/.local/bin/
 
+if test -d "/opt/nvim-linux64/bin"; then
+    export PATH="$PATH:/opt/nvim-linux64/bin"
+fi
+
 alias mkdir="mkdir -pv"
 
 if command -v rsync >/dev/null; then
@@ -58,6 +62,11 @@ fi
 
 ### for install zinit:
 # bash -c "$(curl --fail --show-error --silent --location https://gh.api.99988866.xyz/https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)"
+### for install starship:
+# zinit ice as"command" from"gh-r" \
+#           atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
+#           atpull"%atclone" src"init.zsh"
+# zinit light starship/starship
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
