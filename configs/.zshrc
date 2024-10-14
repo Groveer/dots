@@ -1,3 +1,13 @@
+HISTSIZE=10000      # 内存中保存的历史记录条目数
+SAVEHIST=10000      # 保存在文件中的历史记录条目数
+HISTFILE=${HOME}/.history
+
+setopt APPEND_HISTORY            # 追加历史记录而不是覆盖
+setopt HIST_IGNORE_DUPS          # 忽略重复的命令
+setopt SHARE_HISTORY             # 共享历史记录，多个终端会话同步
+setopt HIST_REDUCE_BLANKS        # 去除历史记录中多余的空格
+setopt HIST_EXPIRE_DUPS_FIRST    # 当历史记录超出限制时，优先删除重复条目
+
 export PATH=$PATH:~/.local/bin/
 
 if test -d "/opt/nvim-linux64/bin"; then
@@ -88,6 +98,7 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-bin-gem-node \
     zdharma-continuum/zinit-annex-patch-dl \
     zdharma-continuum/zinit-annex-rust \
+    zdharma-continuum/history-search-multi-word \
     starship/starship \
     skywind3000/z.lua
 
@@ -102,3 +113,4 @@ zinit wait lucid light-mode for \
       zsh-users/zsh-completions
 
 
+export DEEPSEEK_API_KEY=sk-48e30fb2f7c04ebcbbc5f0e713c278f2
