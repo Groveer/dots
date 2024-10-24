@@ -49,6 +49,9 @@ fi
 #     eval "$(zoxide init bash)"
 # fi
 
+if command -v starship >/dev/null; then
+    eval "$(starship init zsh)"
+fi
 if command -v fnm >/dev/null; then
     eval "$(fnm env --use-on-cd)"
 fi
@@ -72,11 +75,6 @@ fi
 
 ### for install zinit:
 # bash -c "$(curl --fail --show-error --silent --location https://gh.api.99988866.xyz/https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)"
-### for install starship:
-# zinit ice as"command" from"gh-r" \
-#           atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
-#           atpull"%atclone" src"init.zsh"
-# zinit light starship/starship
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
@@ -99,7 +97,6 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-patch-dl \
     zdharma-continuum/zinit-annex-rust \
     zdharma-continuum/history-search-multi-word \
-    starship/starship \
     skywind3000/z.lua
 
 ### End of Zinit's installer chunk
@@ -113,4 +110,3 @@ zinit wait lucid light-mode for \
       zsh-users/zsh-completions
 
 
-export DEEPSEEK_API_KEY=sk-48e30fb2f7c04ebcbbc5f0e713c278f2
