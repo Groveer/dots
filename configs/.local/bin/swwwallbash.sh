@@ -23,6 +23,11 @@ fi
 
 set -a
 source "${wallbashOut}"
+if [ -f "${hydeThemeDir}/theme.dcol" ] && [ "${enableWallDcol}" -eq 0 ]  ; then
+    source "${hydeThemeDir}/theme.dcol"
+    echo "[theme] Overriding dominant colors from \"${hydeTheme}\""
+    echo "[note] Remove \"${hydeThemeDir}/theme.dcol\" to use wallpaper dominant colors"
+fi
 [ "${dcol_mode}" == "dark" ] && dcol_invt="light" || dcol_invt="dark"
 set +a
 
@@ -31,8 +36,11 @@ set +a
 
 fn_wallbash () {
     local tplt="${1}"
+    [ -f "${hydeConfDir}/hyde.conf" ] && source "${hydeConfDir}/hyde.conf"
+    # Skips the the template declared in ./hyde.conf
+    [[ " ${skip_wallbash[@]} " =~ " ${tplt} " ]] && echo "[skip: template] ${tplt}" && return 0
     eval target="$(head -1 "${tplt}" | awk -F '|' '{print $1}')"
-    [ ! -d "$(dirname "${target}")" ] && echo "[skip] \"${target}\"" && return 0
+    [ ! -d "$(dirname "${target}")" ] && echo "[skip: no dir] \"${target}\"" && return 0
     appexe="$(head -1 "${tplt}" | awk -F '|' '{print $2}')"
     sed '1d' "${tplt}" > "${target}"
 
@@ -223,6 +231,7 @@ fn_wallbash () {
 
 export -f fn_wallbash
 
+[ -n "$HYPRLAND_INSTANCE_SIGNATURE" ] && hyprctl keyword misc:disable_autoreload 1 -q && trap 'hyprctl reload -q && echo "[swwwallbash] reload :: Hyprland"' EXIT
 
 #// switch theme <//> wall based colors
 
