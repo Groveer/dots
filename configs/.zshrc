@@ -1,3 +1,5 @@
+bindkey -e # 使用Emacs风格的键绑定
+
 HISTSIZE=10000      # 内存中保存的历史记录条目数
 SAVEHIST=10000      # 保存在文件中的历史记录条目数
 HISTFILE=${HOME}/.history
