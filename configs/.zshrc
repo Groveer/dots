@@ -1,3 +1,4 @@
+#===================== Base Configuration Start =====================
 bindkey -e # 使用Emacs风格的键绑定
 
 HISTSIZE=10000      # 内存中保存的历史记录条目数
@@ -10,7 +11,9 @@ setopt SHARE_HISTORY             # 共享历史记录，多个终端会话同步
 setopt HIST_REDUCE_BLANKS        # 去除历史记录中多余的空格
 setopt HIST_EXPIRE_DUPS_FIRST    # 当历史记录超出限制时，优先删除重复条目
 
-export PATH=$PATH:~/.local/bin/
+if [[ "$PATH" != *"$HOME/.local/bin"* ]]; then
+    export PATH=$HOME/.local/bin:$PATH
+fi
 
 if test -d "/opt/nvim-linux64/bin"; then
     export PATH="$PATH:/opt/nvim-linux64/bin"
@@ -33,11 +36,10 @@ date-changelog() {
     env LC_ALL=C date +'%a, %d %b %Y %T %z'
 }
 
-export PATH="$HOME/.local/bin:$PATH"
-
-if test -d ${HOME}/.cargo/bin; then
+if [[ -d ${HOME}/.cargo/bin ]] && [[ "$PATH" != *"cargo/bin"* ]]; then
     export PATH="$HOME/.cargo/bin:$PATH"
 fi
+
 if command -v eza >/dev/null; then
     alias ls="eza --icons=auto"
     alias l="ls -al"
@@ -47,9 +49,6 @@ fi
 if command -v bat >/dev/null; then
     alias cat="bat -p"
 fi
-# if command -v zoxide >/dev/null; then
-#     eval "$(zoxide init bash)"
-# fi
 
 if command -v starship >/dev/null; then
     eval "$(starship init zsh)"
@@ -57,10 +56,10 @@ fi
 if command -v fnm >/dev/null; then
     eval "$(fnm env --use-on-cd)"
 fi
-if test -d /usr/lib/qt6/bin; then
+if [[ -d /usr/lib/qt6/bin ]] && [[ "$PATH" != *"qt6/bin"* ]]; then
     export PATH="/usr/lib/qt6/bin/:$PATH"
 fi
-if test -d ${HOME}/.python_venv; then
+if [[ -d ${HOME}/.python_venv ]] && [[ "$PATH" != *"python_venv"* ]]; then
     source ${HOME}/.python_venv/bin/activate
 fi
 
@@ -110,5 +109,17 @@ zinit wait lucid light-mode for \
       zsh-users/zsh-autosuggestions \
   blockf atpull'zinit creinstall -q .' \
       zsh-users/zsh-completions
+#===================== Base Configuration End =======================
 
+#===================== User Configuration Start =====================
 
+if [[ "$PATH" != *"distcc"* ]]; then
+    export PATH="/usr/lib/distcc/bin/:$PATH"
+fi
+
+export CC="clang"
+export CXX="clang++"
+
+# export RUSTC_WRAPPER=/usr/bin/sccache
+
+#===================== User Configuration End =======================
