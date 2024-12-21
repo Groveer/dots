@@ -41,7 +41,6 @@ dict=(
     [pip]=pip
     [npm]=npm
     [cargo]=cargo
-    [htop]=htop
     [chrome]=google-chrome-stable
 )
 
