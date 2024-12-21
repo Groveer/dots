@@ -4,6 +4,7 @@
 // sourced from header module //
 
     "layer": "top",
+    "output": [ "*" ],
     "position": "bottom",
     "mod": "dock",
     "height": 28,
@@ -160,7 +161,7 @@
             "(.*)Spotify": "Spotify 󰓇",
             "(.*)Steam": "Steam 󰓓"
         },
-        "max-length": 1000
+        "max-length": 50
     },
 
     "backlight": {
