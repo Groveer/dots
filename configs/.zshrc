@@ -113,9 +113,6 @@ if [[ "$PATH" != *"distcc"* ]]; then
     export PATH="/usr/lib/distcc/bin/:$PATH"
 fi
 
-export CC="clang"
-export CXX="clang++"
-
 # export RUSTC_WRAPPER=/usr/bin/sccache
 
 #===================== User Configuration End =======================
