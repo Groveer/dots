@@ -54,7 +54,7 @@ yay -S qt5-wayland qt6-wayland
 4. hypr
 
 ```bash
-yay -S dunst libnotify hyprland rofi-wayland waybar swww swaylock-effects-git wlogout grimblast-git cliphist pipewire-pulse swappy hyde-cli-git wf-recorder
+yay -S dunst libnotify hyprland rofi-wayland waybar swww swaylock-effects wlogout grimblast-git cliphist pipewire-pulse swappy hyde-cli-git wf-recorder
 ```
 
 5. dependency
