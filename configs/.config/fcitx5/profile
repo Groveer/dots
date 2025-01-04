@@ -4,17 +4,17 @@ Name=默认
 # Layout
 Default Layout=cn
 # Default Input Method
-DefaultIM=pinyin
+DefaultIM=keyboard-cn
 
 [Groups/0/Items/0]
 # Name
-Name=keyboard-cn
+Name=pinyin
 # Layout
 Layout=
 
 [Groups/0/Items/1]
 # Name
-Name=pinyin
+Name=keyboard-cn
 # Layout
 Layout=
 
